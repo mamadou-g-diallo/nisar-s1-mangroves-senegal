@@ -1,5 +1,5 @@
 % Saloum poster (French). Build: cd poster && lualatex poster_saloum_fr.tex
-% Figures are produced by the scripts in ../scripts (see README).
+% Figures are produced by the scripts in ../scripts (see README). UCAD logo: Wikimedia Commons, CC BY-SA 4.0.
 % Poster scientifique -- mangroves du Saloum, NISAR (bande L) et Sentinel-1 (bande C)
 \documentclass[20pt,a0paper,portrait,margin=0mm,innermargin=18mm,blockverticalspace=14mm,colspace=16mm,subcolspace=8mm]{tikzposter}
 \usepackage[french]{babel}
@@ -50,7 +50,13 @@
 {\fontsize{40}{48}\selectfont\color{black}\textbf{Mamadou Galy DIALLO}\par}
 \vspace{3mm}
 {\fontsize{30}{38}\selectfont\color{gris}galy.quantum@gmail.com\par}}
+\ifdefined\sansLogo
 \begin{minipage}[c]{\linewidth}\titrebloc\end{minipage}
+\else
+\begin{minipage}[c]{0.14\linewidth}\centering\includegraphics[width=0.72\linewidth]{logos/logo_ucad.png}\end{minipage}%
+\begin{minipage}[c]{0.72\linewidth}\titrebloc\end{minipage}%
+\begin{minipage}[c]{0.14\linewidth}\centering\includegraphics[width=0.72\linewidth]{logos/logo_ucad.png}\end{minipage}
+\fi
 \vspace{8mm}
 {\color{ucad}\rule{\linewidth}{5mm}}
 }
@@ -222,7 +228,7 @@ delta et la validation de terrain sont des pistes à explorer, en préparation d
 {\color{gris}\textbf{Données} : NISAR L2 (NASA--ISRO ; produits JPL générés avec \textbf{ISCE3}, ASF DAAC),
 Copernicus Sentinel-1 (ESA, UE), ESA WorldCover 2021, marégraphes UHSLC et IOC (VLIZ/UNESCO).
 \textbf{Code} : \texttt{nisar\_s1}, github.com/mamadou-g-diallo/nisar-s1 (Apache-2.0).
-\par}
+\ifdefined\sansLogo\else Logo UCAD : Wikimedia Commons, CC BY-SA 4.0.\fi\par}
 }
 \end{columns}
 \end{document}

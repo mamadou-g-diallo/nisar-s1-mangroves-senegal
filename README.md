@@ -104,7 +104,7 @@ data/                       small inputs: footprints, Sentinel-1 SLC list, acqui
 scripts/                    00–11 analysis steps, common.py (paths), run_extraction.sh
 results/                    tables (CSV)
 figures/                    poster figures (PNG)
-poster/                     poster source (LaTeX, tikzposter) and PDF
+poster/                     poster source (LaTeX, tikzposter), PDF and UCAD logo
 ```
 
 ## References
