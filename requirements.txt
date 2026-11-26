@@ -1,0 +1,7 @@
+# Processing package used by the scripts of this study (pinned release)
+nisar_s1 @ git+https://github.com/mamadou-g-diallo/nisar-s1@v0.4.2
+# figures and statistics
+matplotlib
+scipy
+geopandas
+rasterio

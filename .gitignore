@@ -1,0 +1,17 @@
+# heavy products (nisar-s1 outputs, Sentinel-1 SLC, SNAP) live in $SALOUM_WORK, default ./work
+work/
+# inputs fetched by scripts/00_fetch_inputs.py
+data/tide/
+data/ioc/
+data/naturalearth/
+# LaTeX build files
+poster/*.aux
+poster/*.log
+poster/*.out
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+# credentials
+.env
+.netrc

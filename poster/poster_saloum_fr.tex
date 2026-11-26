@@ -1,0 +1,228 @@
+% Saloum poster (French). Build: cd poster && lualatex poster_saloum_fr.tex
+% Figures are produced by the scripts in ../scripts (see README).
+% Poster scientifique -- mangroves du Saloum, NISAR (bande L) et Sentinel-1 (bande C)
+\documentclass[20pt,a0paper,portrait,margin=0mm,innermargin=18mm,blockverticalspace=14mm,colspace=16mm,subcolspace=8mm]{tikzposter}
+\usepackage[french]{babel}
+\usepackage{fontspec}
+\setmainfont{TeX Gyre Heros}
+\usepackage{graphicx,booktabs,xcolor,amsmath,enumitem,tabularx}
+\usetikzlibrary{positioning,arrows.meta,fit,calc}
+\usepackage[hidelinks]{hyperref}
+\definecolor{ucad}{HTML}{2A91CF}
+\definecolor{nuit}{HTML}{12304F}
+\definecolor{bandeL}{HTML}{1F5FAE}
+\definecolor{bandeC}{HTML}{D4541F}
+\definecolor{fond}{HTML}{F5F8FB}
+\definecolor{gris}{HTML}{555555}
+\usetheme{Simple}
+\colorlet{backgroundcolor}{white}
+\colorlet{framecolor}{white}
+\colorlet{blocktitlebgcolor}{nuit}
+\colorlet{blocktitlefgcolor}{white}
+\colorlet{blockbodybgcolor}{fond}
+\colorlet{blockbodyfgcolor}{black}
+\colorlet{titlebgcolor}{white}
+\colorlet{titlefgcolor}{nuit}
+\defineblockstyle{Plat}{titlewidthscale=1, bodywidthscale=1, titleleft, titleoffsetx=0pt, titleoffsety=0pt,
+  bodyoffsetx=0mm, bodyoffsety=12mm, bodyverticalshift=12mm, roundedcorners=6, linewidth=0pt,
+  titleinnersep=9mm, bodyinnersep=11mm}{
+  \draw[color=framecolor, fill=blockbodybgcolor, rounded corners=\blockroundedcorners] (blockbody.south west) rectangle (blockbody.north east);
+  \ifBlockHasTitle
+    \draw[color=framecolor, fill=blocktitlebgcolor, rounded corners=\blockroundedcorners] (blocktitle.south west) rectangle (blocktitle.north east);
+  \fi}
+\useblockstyle{Plat}
+\setlist{leftmargin=1.1em,itemsep=4pt,topsep=4pt}
+\newcommand{\Lb}[1]{\textcolor{bandeL}{\textbf{#1}}}
+\newcommand{\Cb}[1]{\textcolor{bandeC}{\textbf{#1}}}
+\newcommand{\fig}[2][1]{\begin{center}\includegraphics[width=#1\linewidth]{#2}\end{center}}
+\newcommand{\legende}[1]{{\small\color{gris}#1\par}}
+\newcounter{numfig}\newcounter{numtab}
+\newcommand{\figcap}[1]{\stepcounter{numfig}{\small\textbf{Figure \thenumfig.} #1\par}\vspace{2mm}}
+\newcommand{\tabcap}[1]{\stepcounter{numtab}{\small\textbf{Tableau \thenumtab.} #1\par}\vspace{1mm}}
+\newcommand{\sous}[1]{\par\vspace{3mm}{\color{nuit}\large\bfseries #1\par}\vspace{1mm}}
+\newcommand{\cle}[1]{\vspace{4mm}\colorbox{ucad!15}{\parbox{0.97\linewidth}{\vspace{3mm}#1\vspace{3mm}}}\vspace{2mm}}
+
+\settitle{
+\newcommand{\titrebloc}{\centering
+{\color{nuit}\fontsize{66}{78}\selectfont\bfseries Les mangroves du Saloum vues par NISAR\\[5mm]
+\fontsize{50}{60}\selectfont bande L contre bande C, et la marée au passage du satellite\par}
+\vspace{9mm}
+{\fontsize{40}{48}\selectfont\color{black}\textbf{Mamadou Galy DIALLO}\par}
+\vspace{3mm}
+{\fontsize{30}{38}\selectfont\color{gris}galy.quantum@gmail.com\par}}
+\begin{minipage}[c]{\linewidth}\titrebloc\end{minipage}
+\vspace{8mm}
+{\color{ucad}\rule{\linewidth}{5mm}}
+}
+
+\tikzposterlatexaffectionproofoff
+\graphicspath{{../}}   % figures/ at the repository root
+\begin{document}
+\maketitle[width=0.95\paperwidth, titletotopverticalspace=12mm, titletoblockverticalspace=10mm]
+
+\begin{columns}
+% ===================================================================== colonne gauche
+\column{0.5}
+
+\block{1. Introduction}{
+Les mangroves comptent parmi les écosystèmes côtiers les plus riches en carbone [3] et protègent les
+littoraux ; les suivre régulièrement est donc essentiel dans des milieux qui changent vite. Au Sénégal, les
+mangroves du delta du Saloum, longtemps décrites comme en recul, s'étendent de nouveau depuis les
+années 2000 [4] : il faut pouvoir mesurer ces gains comme les pertes. Le radar en \Lb{bande L}, qui traverse
+le houppier et ne dépend ni des nuages ni de l'éclairement, est la référence pour cartographier les
+mangroves [1, 2]. La détection des changements reste pourtant son point faible : 58 à 61\,\% d'exactitude
+seulement pour les gains et pertes de Global Mangrove Watch [2]. Une source d'erreur possible est l'eau :
+sous le couvert, la hauteur de la marée au moment du passage modifie le signal radar ; dans les marais
+littoraux, la rétrodiffusion L baisse quand l'eau monte [5]. La marée est donc le plus souvent traitée
+comme un bruit, et les travaux sur le Saloum reposent encore sur l'optique ou sur la \Cb{bande C} [4].
+Depuis 2025, la mission \textbf{NISAR} (NASA--ISRO) fournit pour la première fois une série L gratuite tous
+les \textbf{12 jours}, ce qui permet de poser ces questions depuis l'espace. \textbf{Ainsi, cette étude
+propose une approche comparative de la bande L (NISAR) et de la bande C (Sentinel-1) sur les mangroves du
+delta du Saloum.}
+\sous{Objectif}
+L'étude s'appuie sur onze dates NISAR et seize dates Sentinel-1 acquises de juin à novembre 2026, en intensité
+et en cohérence, et sur la
+marée observée au marégraphe de Dakar. Elle cherche d'abord à savoir laquelle des deux bandes distingue le
+mieux la mangrove des autres milieux du delta. Elle vérifie ensuite que les passages de NISAR, toujours à la
+même heure, échantillonnent bien tout le cycle de marée, puis estime jusqu'où la marée peut modifier la
+rétrodiffusion et la cohérence de la mangrove en bande L.
+}
+
+\block{2. Zone d'étude}{
+\fig{figures/f0_localisation.png}
+\figcap{Zone d'étude. a) Localisation : Sénégal (limites GADM 4.1), fenêtre d'étude et emprises réelles des
+acquisitions radar (NISAR trace 124 D, Sentinel-1 orbite 133 A). b) Composition colorée NISAR, bande L
+(R = HH, V = HV, B = HH/HV). c) Composition colorée Sentinel-1, bande C (R = VV, V = VH, B = VV/VH).
+Médianes temporelles juin--novembre 2026 ; l'eau apparaît en noir.}
+Le \textbf{delta du Saloum} (fenêtre de 33 $\times$ 33 km, réserve de biosphère UNESCO) est un estuaire
+inverse, hypersalin, où des mangroves basses à \textit{Avicennia} et \textit{Rhizophora} bordent des chenaux
+de marée (bolongs) et des étendues nues salées (tannes). La mangrove couvre environ 414 km$^2$ de la
+fenêtre (WorldCover). Marégraphe de référence : Dakar, à environ 120 km du centre de la fenêtre.
+}
+
+\block{3. Données et méthodes}{
+\tabcap{Données (juin -- novembre 2026, toutes en accès libre).}
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}lXcc@{}}
+\toprule
+Produit & Variables & Géométrie & Acquisitions \\
+\midrule
+\Lb{NISAR L2 GCOV} & $\gamma^0$ HH, HV & trace 124 D, 19 h 34 UTC & 11 dates \\
+\Lb{NISAR L2 GUNW} & cohérence HH à 12 jours & trace 124 D & 8 paires \\
+\Cb{Sentinel-1 RTC} & $\gamma^0$ VV, VH & orbite 133 A, 19 h 17 UTC & 16 dates \\
+\Cb{Sentinel-1 SLC} & cohérence VV à 12 jours (SNAP) & orbite 133 A & 13 paires \\
+ESA WorldCover 2021 & classes d'occupation du sol & -- & 10 m \\
+Marégraphe de Dakar & hauteur d'eau & -- & UHSLC 2015--22, IOC 2026 \\
+\bottomrule
+\end{tabularx}\end{center}
+\vspace{4mm}
+\begin{center}\resizebox{\linewidth}{!}{%
+\begin{tikzpicture}[font=\normalsize, node distance=9mm and 7mm,
+  b/.style={draw=#1, fill=#1!10, rounded corners=3mm, line width=1.2mm, align=center, minimum height=26mm, text width=#1w},
+  bx/.style={draw=nuit!70, fill=white, rounded corners=3mm, line width=1mm, align=center, minimum height=24mm},
+  fl/.style={-{Latex[length=7mm,width=6mm]}, line width=1.4mm, nuit!70}]
+\node[bx, draw=bandeL, fill=bandeL!8, text width=11cm] (gcov) {\textbf{NISAR GCOV + GUNW}\\ $\gamma^0$ HH/HV, cohérence};
+\node[bx, draw=bandeC, fill=bandeC!8, text width=9cm, right=of gcov] (s1) {\textbf{Sentinel-1 RTC + SLC}\\ $\gamma^0$ VV/VH, cohérence};
+\node[bx, text width=8cm, right=of s1] (wc) {\textbf{WorldCover}\\ classes};
+\node[bx, draw=green!50!black, fill=green!6, text width=12cm, right=of wc] (tide) {\textbf{Marégraphes}\\ UHSLC 2015--22, IOC 2026};
+\node[bx, text width=30cm, below=14mm of $(gcov.south)!0.5!(wc.south)$] (grid) {\textbf{Paquet \texttt{nisar\_s1}} : recherche ASF, lecture à distance par fenêtre,\\ grille commune UTM 20 m, médianes temporelles par pixel, classes érodées d'un pixel};
+\node[bx, text width=12cm, below=14mm of tide] (model) {\textbf{Modèle harmonique}\\ 22 constituantes ; hauteur à chaque passage, \textbf{contrôlée sur IOC}};
+\node[bx, fill=ucad!12, text width=19cm, below=14mm of grid.south west, anchor=north west] (sep) {\textbf{Séparabilité de la mangrove}\\ AUC mangrove / classe, IC 95\,\% par bootstrap par blocs (500 m)};
+\node[bx, fill=ucad!12, text width=21cm, right=of sep] (sens) {\textbf{Sensibilité à la marée}\\ $\gamma^0$ = f(marée) : pente et IC 95\,\% ; cohérence = f($|\Delta h|$)};
+\draw[fl] (gcov.south) -- (gcov.south|-grid.north);
+\draw[fl] (s1.south) -- (s1.south|-grid.north);
+\draw[fl] (wc.south) -- (wc.south|-grid.north);
+\draw[fl] (tide) -- (model);
+\draw[fl] (grid.south-|sep.north) -- (sep.north);
+\draw[fl] ($(sens.north west)+(5cm,0)$|-grid.south) -- ($(sens.north west)+(5cm,0)$);
+\draw[fl] (model.south) -- (model.south|-sens.north);
+\end{tikzpicture}}
+\end{center}
+\figcap{Schéma de la méthode. Toute la chaîne radar est dans le paquet libre \texttt{nisar\_s1}. AUC : aire sous la courbe ROC, soit la probabilité qu'un pixel de mangrove et un pixel de l'autre classe tirés au hasard soient correctement ordonnés (0,5 = indiscernables, 1 = séparation parfaite).}
+}
+
+% ===================================================================== colonne droite
+\column{0.5}
+
+\block{4. Résultats}{
+\sous{4.1 La bande L isole la mangrove de la forêt de terre ferme}
+\fig{figures/f2_separabilite.png}
+\figcap{AUC de séparation (axe horizontal) entre la mangrove et chaque classe d'occupation du sol WorldCover, pour l'intensité (L HV, L HH, C VH, C VV) et la cohérence à 12 jours (L et C) ; 0,5 = aucune séparation, 1 = séparation parfaite ; tirets : AUC = 0,8.}
+\cle{Contre la \textbf{forêt continentale} : AUC \Lb{0,87 en L HV} [0,86--0,89] contre \Cb{0,54 en C VH}
+[0,51--0,57] ; en cohérence, \Lb{0,77 en L} [0,75--0,79] contre \Cb{0,63 en C} [0,62--0,65] (IC 95\,\%).
+Contre l'eau, les tannes, les cultures et la savane, les intensités des deux bandes séparent bien
+(AUC $\geq$ 0,9) ; contre les arbustes, aucune variable ne suffit (AUC $\leq$ 0,71).}
+
+\sous{4.2 NISAR échantillonne tout le cycle de marée, vérifié sur mesures}
+\fig{figures/f3_maree.png}
+\figcap{Marée prédite à Dakar par le modèle harmonique (courbe grise), hauteur prédite à chaque passage
+Sentinel-1 (ronds) et NISAR (losanges pleins), et hauteur mesurée au marégraphe IOC aux passages NISAR
+(losanges vides), juin--novembre 2026.}
+La phase M2 avance d'environ 68$^\circ$ en 12 jours : les 11 passages couvrent \textbf{1,00 m} de marée
+prédite. Le modèle s'écarte des mesures IOC de \textbf{4,5 cm} aux passages NISAR (7, $\rho$ = 0,89) et de
+5,0 cm aux passages Sentinel-1 (11) ; les passages mesurés couvrent \textbf{0,90 m}.
+
+\sous{4.3 La mangrove varie peu avec la marée, en bande L comme en bande C}
+\fig{figures/f4_stabilite.png}
+\figcap{Médiane de $\gamma^0$ de la mangrove, en écart à sa moyenne, en bandes L (HV, HH) et C (VH, VV) : a) à chaque date de juin à novembre 2026 ; b) en fonction de la hauteur de marée au passage du satellite.}
+\vspace{2mm}
+\tabcap{Pente de $\gamma^0$ de la mangrove en fonction de la marée au passage (régression linéaire, valeurs brutes). Aucune pente n'est significative : tous les IC contiennent 0.}
+\begin{center}{\renewcommand{\arraystretch}{1.0}\setlength{\tabcolsep}{14pt}
+\begin{tabular}{lccccc}
+\toprule
+ & dates & amplitude & pente & IC 95\,\% & $p$ \\
+ &  & (dB) & (dB/m) & (dB/m) & \\
+\midrule
+\Lb{L HV} & 11 & 0,52 & +0,13 & $-$0,23 à +0,48 & 0,44 \\
+\Lb{L HH} & 11 & 0,95 & +0,36 & $-$0,18 à +0,91 & 0,17 \\
+\Cb{C VH} & 16 & 0,77 & +0,22 & $-$0,20 à +0,63 & 0,28 \\
+\Cb{C VV} & 16 & 0,93 & $-$0,15 & $-$0,70 à +0,40 & 0,56 \\
+\bottomrule
+\end{tabular}}\end{center}
+
+
+\sous{4.4 Cohérence : élevée en bande L, effondrée en bande C, indépendante de la marée}
+\fig{figures/f5_coherence.png}
+\figcap{Cohérence à 12 jours. a, b) Médiane temporelle sur la fenêtre d'étude : a) NISAR, bande L, HH
+(8 paires) ; b) Sentinel-1, bande C, VV (13 paires) ; eau permanente en gris. c, d) Médiane par classe en
+fonction de l'écart de marée $|\Delta h|$ entre les deux dates : c) bande L (mangrove $\rho$ = +0,26,
+$p$ = 0,53) ; d) bande C (mangrove $\rho$ = +0,05, $p$ = 0,87).}
+En bande L, les îles de mangrove ressortent (médiane \Lb{0,72}) ; en bande C, elles sont presque
+uniformément décorrélées (\Cb{0,27}) : le houppier décorrèle la bande C, et seuls les tannes et le bâti
+y restent cohérents. Aucune classe ne varie significativement avec $|\Delta h|$ (toutes les $p \geq 0{,}07$).
+}
+
+\end{columns}
+
+\begin{columns}
+\column{0.67}
+\block{5. Discussion et conclusions}{
+Cette étude propose une approche comparative des bandes L (NISAR) et C (Sentinel-1) pour distinguer les
+mangroves du Saloum et évaluer l'effet de la marée au passage. En intensité comme en cohérence, la bande
+L se démarque face à la \textbf{forêt de terre ferme} : l'AUC passe de \Cb{0,54} (C VH) à \Lb{0,87}
+(L HV), et de \Cb{0,63} à \Lb{0,77} en cohérence. La bande L est sensible à la structure et à la
+biomasse [1] ; en bande C, le signal vient des feuilles du houppier, qui bougent, et la cohérence de la
+mangrove tombe à \Cb{0,27} contre \Lb{0,72}. Les passages NISAR couvrent \textbf{0,90 m} de marée
+mesurée, presque tout le marnage, mais la mangrove varie de moins de \textbf{0,5 dB} en L HV, sans pente
+significative, ce qui rejoint les travaux sur les marais littoraux [5]. L'effet reste borné plutôt
+qu'exclu : une seule saison des pluies, une marée mesurée à Dakar et non dans les bolongs, une référence
+WorldCover non vérifiée sur le terrain. \textbf{Ainsi, en perspective}, la saison sèche, la marée du
+delta et la validation de terrain sont des pistes à explorer, en préparation de la mission \textbf{ROSE-L}.
+}
+\column{0.33}
+\block{Références}{\footnotesize
+\begin{enumerate}[label={[\arabic*]},leftmargin=2.1em,itemsep=2pt]
+\item Lucas \textit{et al.} (2007), \textit{Aquatic Conservation} 17, 245--264.
+\item Bunting \textit{et al.} (2022), \textit{Remote Sensing} 14, 3657.
+\item Simard \textit{et al.} (2019), \textit{Nature Geoscience} 12, 40--45.
+\item Lombard \& Andrieu (2021), \textit{Remote Sensing} 13, 1961.
+\item Lamb \textit{et al.} (2025), \textit{Remote Sensing} 17, 263.
+\end{enumerate}
+\vspace{3mm}
+{\color{gris}\textbf{Données} : NISAR L2 (NASA--ISRO ; produits JPL générés avec \textbf{ISCE3}, ASF DAAC),
+Copernicus Sentinel-1 (ESA, UE), ESA WorldCover 2021, marégraphes UHSLC et IOC (VLIZ/UNESCO).
+\textbf{Code} : \texttt{nisar\_s1}, github.com/mamadou-g-diallo/nisar-s1 (Apache-2.0).
+\par}
+}
+\end{columns}
+\end{document}

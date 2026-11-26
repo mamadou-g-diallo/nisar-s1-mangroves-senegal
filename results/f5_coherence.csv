@@ -1,0 +1,7 @@
+band,cls,n,median,rho,p
+L,Mangroves,8,0.715,0.262,0.531
+L,Bare/tannes,8,0.272,-0.048,0.911
+L,Tree cover,8,0.567,0.143,0.736
+C,Mangroves,13,0.274,0.049,0.873
+C,Bare/tannes,13,0.354,0.429,0.144
+C,Tree cover,13,0.257,0.511,0.074

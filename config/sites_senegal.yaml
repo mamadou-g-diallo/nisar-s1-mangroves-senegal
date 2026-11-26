@@ -1,0 +1,7 @@
+# Sites of this study, for nisar-s1 (export NISAR_S1_SITES=config/sites_senegal.yaml or use --sites-file)
+saloum:
+  bbox: [-16.75, 13.75, -16.45, 14.05]
+  label: "Sine-Saloum delta mangroves"
+casamance:
+  bbox: [-16.40, 12.50, -16.20, 12.70]
+  label: "Lower Casamance mangroves and forest"
