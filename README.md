@@ -4,7 +4,7 @@ Independent study comparing **NISAR (L band, HH/HV)** and **Sentinel-1 (C band, 
 Sine-Saloum delta (Senegal), June–November 2026, with the tide height at every satellite pass.
 
 The processing code is the [`nisar_s1`](https://github.com/mamadou-g-diallo/nisar-s1) package (pinned release
-v0.4.2). This repository holds the study itself: configuration, analysis scripts, result tables, figures and the
+v0.5.0). This repository holds the study itself: configuration, analysis scripts, result tables, figures and the
 poster. A sister study applies the same package to forests in France:
 [nisar-s1-forest-feasibility](https://github.com/mamadou-g-diallo/nisar-s1-forest-feasibility).
 
@@ -74,7 +74,7 @@ NISAR GUNW HH coherence.
 ## Reproduce
 
 ```bash
-pip install -r requirements.txt          # nisar_s1 v0.4.2 and plotting libraries
+pip install -r requirements.txt          # nisar_s1 v0.5.0 and plotting libraries
 export SALOUM_WORK=/path/to/work         # heavy products, outside the repository (default ./work)
 python scripts/00_fetch_inputs.py        # tide gauges and Natural Earth into data/ (about 25 MB)
 bash scripts/run_extraction.sh           # step 1, needs NASA Earthdata credentials in ~/.netrc

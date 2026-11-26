@@ -1,5 +1,5 @@
 # Processing package used by the scripts of this study (pinned release)
-nisar_s1 @ git+https://github.com/mamadou-g-diallo/nisar-s1@v0.4.2
+nisar_s1 @ git+https://github.com/mamadou-g-diallo/nisar-s1@v0.5.0
 # figures and statistics
 matplotlib
 scipy
