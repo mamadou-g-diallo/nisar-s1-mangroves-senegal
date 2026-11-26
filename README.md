@@ -5,8 +5,11 @@ Sine-Saloum delta (Senegal), June–November 2026, with the tide height at every
 
 The processing code is the [`nisar_s1`](https://github.com/mamadou-g-diallo/nisar-s1) package (pinned release
 v0.5.0). This repository holds the study itself: configuration, analysis scripts, result tables, figures and the
-poster. A sister study applies the same package to forests in France:
-[nisar-s1-forest-france](https://github.com/mamadou-g-diallo/nisar-s1-forest-france).
+poster.
+
+The same package runs two sister studies, so the three are reproducible with the same code:
+[nisar-s1-forest-france](https://github.com/mamadou-g-diallo/nisar-s1-forest-france) (clear-cuts and a forested landslide in France) and
+[nisar-s1-budworm-canada](https://github.com/mamadou-g-diallo/nisar-s1-budworm-canada) (spruce budworm defoliation in Quebec, Canada).
 
 **Poster (French):** [poster/poster_saloum_fr.pdf](poster/poster_saloum_fr.pdf)
 
