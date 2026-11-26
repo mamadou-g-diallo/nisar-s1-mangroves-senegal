@@ -15,7 +15,7 @@ import pandas as pd
 
 from common import DATA
 
-UA = {"User-Agent": "nisar-s1-saloum-mangroves/1.0"}
+UA = {"User-Agent": "nisar-s1-mangroves-senegal/1.0"}
 
 
 def get(url, out, label):

@@ -6,7 +6,7 @@ Sine-Saloum delta (Senegal), June–November 2026, with the tide height at every
 The processing code is the [`nisar_s1`](https://github.com/mamadou-g-diallo/nisar-s1) package (pinned release
 v0.5.0). This repository holds the study itself: configuration, analysis scripts, result tables, figures and the
 poster. A sister study applies the same package to forests in France:
-[nisar-s1-forest-feasibility](https://github.com/mamadou-g-diallo/nisar-s1-forest-feasibility).
+[nisar-s1-forest-france](https://github.com/mamadou-g-diallo/nisar-s1-forest-france).
 
 **Poster (French):** [poster/poster_saloum_fr.pdf](poster/poster_saloum_fr.pdf)
 
